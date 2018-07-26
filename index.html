@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	 <link data-require="bootstrap@*" data-semver="3.3.5" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<script data-require="bootstrap@*" data-semver="3.3.5" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script data-require="angular.js@1.4.3" data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular.js"></script>
+<script data-require="angular-route@*" data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
+</head>
+<body ng-controller="myController">
+	<div ng-repeat="question in questions">
+		<p>{{question.text}}</p>
+		<p ng-repeat="option in question.options">&nbsp;&nbsp;&nbsp;{{option}}</p>
+		
+	</div>
+</body>
+<script>
+	var app = angular.module('app', []);
+	app.controller('myController', function($scope, $http) {
+		$http.get('questions.json')
+			.then(function(res){
+				$scope.questions = res.data;
+			});
+	});
+
+</script>
+
+</html>
