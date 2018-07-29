@@ -39,6 +39,6 @@
     $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
     header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="test.xlsx"');
-    header('Cache-Control: mag-age=0');
+    header('Cache-Control: max-age=0');
     $writer->save('php://output');
     ?>
